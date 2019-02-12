@@ -1,31 +1,20 @@
-import { Component } from "react";
-import { styled, ThemeProvider } from "../style/styled-components";
+import React from "react";
+import { ThemeProvider } from "../style/styled-components";
 import { theme } from "../style/theme";
 import { Provider } from "react-redux";
-import { combineReducers, createStore } from "redux";
-import reducers from "./reducers";
-import { MyComponent } from "./MyComponent";
+import Router from "./router/Router";
+import { configureStore } from "./store";
 
-// const combinedReducers = combineReducers<any/*AppState*/>(reducers);
-// const store = createStore(combinedReducers, /*{someDefaultAppState}*/);
+const store = configureStore();
 
-export class App extends Component {
+export class App extends React.Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        {/*<Provider store={store}>*/}
-          <Div textColor="green">
-            A Styled Component
-          </Div>
-          <MyComponent />
-        {/*</Provider>*/}
+        <Provider store={store}>
+          <Router />
+        </Provider>
       </ThemeProvider>
     );
   }
 }
-
-const Div = styled('div')<{ textColor: string }>`
-  color: ${p => p.textColor};
-  background: ${p => p.theme.primaryColor};
-  font-size: 30px;
-`;
