@@ -1,8 +1,8 @@
 import * as React from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import { styled } from "../../style/styled-components";
 
-export class Router extends React.Component {
+export default class Router extends React.Component {
   render() {
     return (
       <RouterWrap>
@@ -12,9 +12,9 @@ export class Router extends React.Component {
   }
 }
 
-export default connect(
-  () => ({}),
-  () => ({}))
-(Router);
+// export default connect(
+//   () => ({}),
+//   () => ({}))
+// (Router);
 
 const RouterWrap = styled("div")``;
