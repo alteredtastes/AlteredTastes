@@ -1,4 +1,4 @@
-package com.alteredtastes.web;
+package com.alteredtastes;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
