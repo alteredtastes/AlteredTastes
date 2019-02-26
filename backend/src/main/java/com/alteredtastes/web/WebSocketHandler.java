@@ -1,4 +1,4 @@
-package com.alteredtastes;
+package com.alteredtastes.web;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

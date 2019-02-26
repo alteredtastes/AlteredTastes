@@ -1,4 +1,4 @@
-package com.alteredtastes;
+package com.alteredtastes.web;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -23,7 +23,7 @@ public class Server {
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .handler(new LoggingHandler(LogLevel.INFO))
-                    .childHandler(new HTTPInitializer());
+                    .childHandler(new ServerInitializer());
 
             Channel ch = b.bind(PORT).sync().channel();
 

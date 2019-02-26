@@ -14,25 +14,30 @@ async function logFetch(url:string) {
 }
 
 export default class Router extends React.Component<{}> {
+  socket:WebSocket|null = null;
 
   constructor(props:{}) {
     super(props);
   }
 
   componentWillMount(): void {
-    logFetch('')
+    this.socket = new WebSocket("ws://localhost:9000");
   }
 
-  onCallApi = () => {
-    // logFetch('https://localhost:9000');
-    var exampleSocket = new WebSocket("ws://localhost:9000");
-    exampleSocket.send("Here's some text that the server is urgently awaiting!");
+  onSendMessage = () => {
+    if (this.socket)
+      this.socket.send("Here's some text that the server is urgently awaiting!");
+  };
+
+  onSendRequest = () => {
+    logFetch("http://localhost:9000");
   };
 
   render() {
     return (
       <RouterWrap>
-        <button onClick={this.onCallApi}>Call API</button>
+        <button onClick={this.onSendMessage}>Send Message</button>
+        <button onClick={this.onSendRequest}>Send Request</button>
       </RouterWrap>
     );
   }
