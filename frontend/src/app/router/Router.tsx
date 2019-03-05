@@ -2,7 +2,6 @@ import * as React from "react";
 // import { connect } from "react-redux";
 import { styled } from "../../style/styled-components";
 
-
 async function logFetch(url:string) {
   try {
     const response = await fetch(url);
@@ -13,24 +12,15 @@ async function logFetch(url:string) {
   }
 }
 
-export default class Router extends React.Component<{}> {
-  socket:WebSocket|null = null;
-
-  constructor(props:{}) {
-    super(props);
-  }
-
-  componentWillMount(): void {
-    this.socket = new WebSocket("ws://localhost:9000");
-  }
+export default class Router extends React.Component<{socket:WebSocket}> {
 
   onSendMessage = () => {
-    if (this.socket)
-      this.socket.send("Here's some text that the server is urgently awaiting!");
+    if (this.props.socket)
+      this.props.socket.send("Here's some text that the server is urgently awaiting!");
   };
 
   onSendRequest = () => {
-    logFetch("http://localhost:9000");
+    logFetch("http://localhost:9090/rest");
   };
 
   render() {
