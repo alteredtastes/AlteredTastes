@@ -1,9 +1,11 @@
 import * as React from "react";
 // import { connect } from "react-redux";
-import { styled } from "../../style/styled-components";
+import {styled} from "../../style/styled-components";
+import {Rest} from "../../rest/Rest";
 
 async function logFetch(url:string) {
   try {
+    // const httpFetch = new RestApplicationClient(new HttpFetch());
     const response = await fetch(url);
     console.log(await response.text());
   }
@@ -19,7 +21,8 @@ export default class Router extends React.Component<{socket:WebSocket}> {
       this.props.socket.send("Here's some text that the server is urgently awaiting!");
   };
 
-  onSendRequest = () => {
+  onSendRequest = async () => {
+
     logFetch("http://localhost:9090/rest");
   };
 

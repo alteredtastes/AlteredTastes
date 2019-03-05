@@ -9,7 +9,6 @@ export namespace Rest {
     }
 
     export interface HttpClient {
-
         request<R>(requestConfig: { method: string; url: string; queryParams?: any; data?: any; copyFn?: (data: R) => R; }): RestResponse<R>;
     }
 
