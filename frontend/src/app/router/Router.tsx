@@ -1,18 +1,7 @@
 import * as React from "react";
 // import { connect } from "react-redux";
 import {styled} from "../../style/styled-components";
-import {Rest} from "../../rest/Rest";
-
-async function logFetch(url:string) {
-  try {
-    // const httpFetch = new RestApplicationClient(new HttpFetch());
-    const response = await fetch(url);
-    console.log(await response.text());
-  }
-  catch (err) {
-    console.log('fetch failed', err);
-  }
-}
+import {rest} from "../../protocol/RestClient";
 
 export default class Router extends React.Component<{socket:WebSocket}> {
 
@@ -22,8 +11,7 @@ export default class Router extends React.Component<{socket:WebSocket}> {
   };
 
   onSendRequest = async () => {
-
-    logFetch("http://localhost:9090/rest");
+    const meal = await rest.index();
   };
 
   render() {

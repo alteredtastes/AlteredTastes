@@ -37,11 +37,10 @@
                 <configuration>
                     <jsonLibrary>jackson2</jsonLibrary>
                     <classesFromAutomaticJaxrsApplication>true</classesFromAutomaticJaxrsApplication>
-                    <outputFileType>implementationFile</outputFileType>
-                    <outputFile>../frontend/src/rest/Rest.ts</outputFile>
                     <generateJaxrsApplicationClient>true</generateJaxrsApplicationClient>
                     <outputKind>module</outputKind>
-                    <namespace>Rest</namespace>
+                    <outputFileType>implementationFile</outputFileType>
+                    <outputFile>../frontend/src/protocol/rest/Rest.ts</outputFile>
                 </configuration>
             </plugin>
         </plugins>
