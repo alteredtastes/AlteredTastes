@@ -1,5 +1,5 @@
 /* tslint:disable */
-// Generated using typescript-generator version 2.12.476 on 2019-03-06 01:36:08.
+// Generated using typescript-generator version 2.12.476 on 2019-03-06 01:52:47.
 
 export interface Meal {
     name: string;

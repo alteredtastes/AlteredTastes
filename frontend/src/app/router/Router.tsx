@@ -4,12 +4,12 @@ import {styled} from "../../style/styled-components";
 import {rest} from "../../protocol/RestClient";
 
 interface IRouterProps {socket:WebSocket}
-interface IRouterState {data:string}
+interface IRouterState {data:string[]}
 
 export default class Router extends React.Component<IRouterProps, IRouterState> {
   constructor(props:{socket:WebSocket}) {
     super(props);
-    this.state = {data: "unfetched"};
+    this.state = {data: []};
   }
 
   onSendMessage = () => {
@@ -19,8 +19,8 @@ export default class Router extends React.Component<IRouterProps, IRouterState> 
 
   onSendRequest = async () => {
     const meal = await rest.meal(0);
-    this.setState({data: JSON.stringify(meal)}, () => {
-      setTimeout(() => this.setState({data: "cleared"}), 2000);
+    this.setState(() => {
+      return {data: this.state.data.concat(JSON.stringify(meal))}
     });
   };
 
@@ -29,7 +29,7 @@ export default class Router extends React.Component<IRouterProps, IRouterState> 
       <RouterWrap>
         <button onClick={this.onSendMessage}>Send Message</button>
         <button onClick={this.onSendRequest}>Send Request</button>
-        <div>{this.state.data}</div>
+        <Logs>{this.state.data.map(str => <div>{str}</div>)}</Logs>
       </RouterWrap>
     );
   }
@@ -41,3 +41,7 @@ export default class Router extends React.Component<IRouterProps, IRouterState> 
 // (Router);
 
 const RouterWrap = styled("div")``;
+const Logs = styled('div')`
+  display: flex;
+  flex-direction: column;
+`;
