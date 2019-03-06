@@ -3,7 +3,14 @@ import * as React from "react";
 import {styled} from "../../style/styled-components";
 import {rest} from "../../protocol/RestClient";
 
-export default class Router extends React.Component<{socket:WebSocket}> {
+interface IRouterProps {socket:WebSocket}
+interface IRouterState {data:string}
+
+export default class Router extends React.Component<IRouterProps, IRouterState> {
+  constructor(props:{socket:WebSocket}) {
+    super(props);
+    this.state = {data: "unfetched"};
+  }
 
   onSendMessage = () => {
     if (this.props.socket)
@@ -11,7 +18,10 @@ export default class Router extends React.Component<{socket:WebSocket}> {
   };
 
   onSendRequest = async () => {
-    const meal = await rest.index();
+    const meal = await rest.meal(0);
+    this.setState({data: JSON.stringify(meal)}, () => {
+      setTimeout(() => this.setState({data: "cleared"}), 2000);
+    });
   };
 
   render() {
@@ -19,6 +29,7 @@ export default class Router extends React.Component<{socket:WebSocket}> {
       <RouterWrap>
         <button onClick={this.onSendMessage}>Send Message</button>
         <button onClick={this.onSendRequest}>Send Request</button>
+        <div>{this.state.data}</div>
       </RouterWrap>
     );
   }

@@ -13,7 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import com.google.gson.Gson;
+import com.alteredtastes.model.Meal;
 
 @Path("/rest")
 public class RestAPIService {

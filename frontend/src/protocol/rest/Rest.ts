@@ -1,5 +1,5 @@
 /* tslint:disable */
-// Generated using typescript-generator version 2.12.476 on 2019-03-06 00:11:01.
+// Generated using typescript-generator version 2.12.476 on 2019-03-06 01:36:08.
 
 export interface Meal {
     name: string;
@@ -14,22 +14,6 @@ export interface HttpClient {
 export class RestApplicationClient {
 
     constructor(protected httpClient: HttpClient) {
-    }
-
-    /**
-     * HTTP GET /ip/{fileName}
-     * Java method: com.alteredtastes.StaticFileService.getFileFromInputStream
-     */
-    getFileFromInputStream(fileName: string): RestResponse<any> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`ip/${fileName}` });
-    }
-
-    /**
-     * HTTP GET /op/{fileName}
-     * Java method: com.alteredtastes.StaticFileService.getFileUsingStreamingOutput
-     */
-    getFileUsingStreamingOutput(fileName: string): RestResponse<any> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`op/${fileName}` });
     }
 
     /**
@@ -70,22 +54,6 @@ export class RestApplicationClient {
      */
     update(id: number, arg1: Meal): RestResponse<any> {
         return this.httpClient.request({ method: "PUT", url: uriEncoding`rest/${id}`, data: arg1 });
-    }
-
-    /**
-     * HTTP POST /{fileName}
-     * Java method: com.alteredtastes.StaticFileService.postFile
-     */
-    postFile(fileName: string): RestResponse<void> {
-        return this.httpClient.request({ method: "POST", url: uriEncoding`${fileName}` });
-    }
-
-    /**
-     * HTTP GET /{path: .*}
-     * Java method: com.alteredtastes.StaticFileService.getFile
-     */
-    getFile(path: string): RestResponse<any> {
-        return this.httpClient.request({ method: "GET", url: uriEncoding`${path}` });
     }
 }
 

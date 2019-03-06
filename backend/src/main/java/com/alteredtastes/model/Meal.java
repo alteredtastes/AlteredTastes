@@ -1,4 +1,4 @@
-package com.alteredtastes;
+package com.alteredtastes.model;
 
 public class Meal {
     private String name;
