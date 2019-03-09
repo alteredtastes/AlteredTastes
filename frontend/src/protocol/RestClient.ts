@@ -15,7 +15,7 @@ class RestClient extends RestApplicationClient {
   }
 }
 
-class FetchClient implements HttpClient {
+class Fetcher implements HttpClient {
   request<R>(requestConfig:RequestConfig<R>) {
     const {url, method, queryParams, data, copyFn} = requestConfig;
     return this.doFetch(url, {
@@ -31,4 +31,4 @@ class FetchClient implements HttpClient {
   }
 }
 
-export const rest = new RestClient(new FetchClient());
+export const rest = new RestClient(new Fetcher());
