@@ -13,7 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import com.alteredtastes.model.Meal;
+import com.alteredtastes.models.Meal;
 
 @Path("/rest")
 public class RestAPIService {
