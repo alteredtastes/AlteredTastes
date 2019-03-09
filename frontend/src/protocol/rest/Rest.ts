@@ -1,5 +1,5 @@
 /* tslint:disable */
-// Generated using typescript-generator version 2.12.476 on 2019-03-06 01:52:47.
+// Generated using typescript-generator version 2.12.476 on 2019-03-08 21:05:46.
 
 export interface Meal {
     name: string;
@@ -58,6 +58,11 @@ export class RestApplicationClient {
 }
 
 export type RestResponse<R> = Promise<R>;
+
+export enum MyEnum {
+    BASE = "BASE",
+    ROOT = "ROOT",
+}
 
 function uriEncoding(template: TemplateStringsArray, ...substitutions: any[]): string {
     let result = "";
