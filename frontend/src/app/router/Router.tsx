@@ -1,7 +1,9 @@
 import * as React from "react";
 import {Dispatch, SetStateAction} from "react";
-import {styled} from "../../style/styled-components";
-import {rest} from "../../protocol/RestClient";
+import {rest} from "../../protocol/rest/RestClient";
+import styled from "styled-components";
+import {useQuery} from "../../protocol/graphql/GraphQLClient";
+import {GET_DOGS} from "../../protocol/graphql/queries";
 
 interface IRouterProps {socket:WebSocket}
 interface IRouterState {data:string[]}
@@ -16,8 +18,9 @@ const onSendRequest = async (state:IRouterState, setState:Dispatch<SetStateActio
   setState({data: state.data.concat(JSON.stringify(meal))});
 };
 
-export default function Router({socket}:IRouterProps) {
+const Router = ({socket}:IRouterProps) => {
   const [state, setState] = React.useState<IRouterState>({data:[]});
+  const { data, error, loading } = useQuery(GET_DOGS);
 
   return (
     <RouterWrap>
@@ -33,3 +36,5 @@ const Logs = styled('div')`
   display: flex;
   flex-direction: column;
 `;
+
+export default Router;

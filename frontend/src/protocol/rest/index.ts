@@ -1,7 +1,12 @@
 /* tslint:disable */
-// Generated using typescript-generator version 2.12.476 on 2019-03-08 21:05:46.
+// Generated using typescript-generator version 2.12.476 on 2019-03-11 01:53:37.
 
 export interface Meal {
+    name: string;
+    price: number;
+}
+
+export interface MyClass {
     name: string;
     price: number;
 }
@@ -18,7 +23,7 @@ export class RestApplicationClient {
 
     /**
      * HTTP POST /rest
-     * Java method: com.alteredtastes.RestAPIService.create
+     * Java method: com.alteredtastes.RestService.create
      */
     create(arg0: Meal): RestResponse<any> {
         return this.httpClient.request({ method: "POST", url: uriEncoding`rest`, data: arg0 });
@@ -26,7 +31,7 @@ export class RestApplicationClient {
 
     /**
      * HTTP GET /rest
-     * Java method: com.alteredtastes.RestAPIService.index
+     * Java method: com.alteredtastes.RestService.index
      */
     index(): RestResponse<any> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest` });
@@ -34,7 +39,7 @@ export class RestApplicationClient {
 
     /**
      * HTTP DELETE /rest/{id}
-     * Java method: com.alteredtastes.RestAPIService.delete
+     * Java method: com.alteredtastes.RestService.delete
      */
     delete(id: number): RestResponse<any> {
         return this.httpClient.request({ method: "DELETE", url: uriEncoding`rest/${id}` });
@@ -42,7 +47,7 @@ export class RestApplicationClient {
 
     /**
      * HTTP GET /rest/{id}
-     * Java method: com.alteredtastes.RestAPIService.meal
+     * Java method: com.alteredtastes.RestService.meal
      */
     meal(id: number): RestResponse<any> {
         return this.httpClient.request({ method: "GET", url: uriEncoding`rest/${id}` });
@@ -50,7 +55,7 @@ export class RestApplicationClient {
 
     /**
      * HTTP PUT /rest/{id}
-     * Java method: com.alteredtastes.RestAPIService.update
+     * Java method: com.alteredtastes.RestService.update
      */
     update(id: number, arg1: Meal): RestResponse<any> {
         return this.httpClient.request({ method: "PUT", url: uriEncoding`rest/${id}`, data: arg1 });
@@ -61,6 +66,11 @@ export type RestResponse<R> = Promise<R>;
 
 export enum MyEnum {
     BASE = "BASE",
+    ROOT = "ROOT",
+}
+
+export enum MyEnumm {
+    PROTOCOL = "PROTOCOL",
     ROOT = "ROOT",
 }
 
