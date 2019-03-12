@@ -38,13 +38,12 @@
                     <jsonLibrary>jackson2</jsonLibrary>
                     <classesFromAutomaticJaxrsApplication>true</classesFromAutomaticJaxrsApplication>
                     <generateJaxrsApplicationClient>true</generateJaxrsApplicationClient>
-                    <classPatterns>com.alteredtastes.models.*</classPatterns>
-                    <classPatterns>com.alteredtastes.enums.*</classPatterns>
+                    <classPatterns>com.alteredtastes.shared.*</classPatterns>
                     <mapEnum>asEnum</mapEnum>
                     <nonConstEnums>true</nonConstEnums>
                     <outputKind>module</outputKind>
                     <outputFileType>implementationFile</outputFileType>
-                    <outputFile>../frontend/src/protocol/rest/Rest.ts</outputFile>
+                    <outputFile>../frontend/src/protocol/rest/index.ts</outputFile>
                 </configuration>
             </plugin>
         </plugins>

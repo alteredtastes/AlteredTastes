@@ -1,10 +1,10 @@
-package com.alteredtastes.models;
+package com.alteredtastes.shared;
 
-public class Meal {
+public class MyClass {
     private String name;
     private Float price;
 
-    public Meal(String name, Float price) {
+    public MyClass(String name, Float price) {
         this.name = name;
         this.price = price;
     }

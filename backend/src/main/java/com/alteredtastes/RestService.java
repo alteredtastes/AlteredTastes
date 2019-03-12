@@ -13,14 +13,14 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import com.alteredtastes.models.Meal;
+import com.alteredtastes.shared.Meal;
 
 @Path("/rest")
-public class RestAPIService {
+public class RestService {
 
     private List<Meal> meals = new ArrayList<Meal>();
 
-    public RestAPIService() {
+    public RestService() {
         meals.add(new Meal("Java beans",42.0f));
     }
 

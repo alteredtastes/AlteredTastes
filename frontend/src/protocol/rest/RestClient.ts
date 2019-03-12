@@ -1,4 +1,4 @@
-import {HttpClient, RestApplicationClient} from "./rest/Rest";
+import {HttpClient, RestApplicationClient} from "./";
 
 interface RequestConfig<R> {
   method: string;

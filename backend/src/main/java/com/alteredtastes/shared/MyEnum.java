@@ -1,4 +1,4 @@
-package com.alteredtastes.enums;
+package com.alteredtastes.shared;
 
 public enum MyEnum {
     BASE,
