@@ -1,5 +1,3 @@
-package com.alteredtastes.shared;
-
 public enum MyEnumm {
     PROTOCOL((String)"http"),
     ROOT((String)"sandy.atr.local");

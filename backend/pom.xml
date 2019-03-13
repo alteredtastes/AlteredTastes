@@ -38,7 +38,7 @@
                     <jsonLibrary>jackson2</jsonLibrary>
                     <classesFromAutomaticJaxrsApplication>true</classesFromAutomaticJaxrsApplication>
                     <generateJaxrsApplicationClient>true</generateJaxrsApplicationClient>
-                    <classPatterns>com.alteredtastes.shared.*</classPatterns>
+                    <classPatterns>resources.*</classPatterns>
                     <mapEnum>asEnum</mapEnum>
                     <nonConstEnums>true</nonConstEnums>
                     <outputKind>module</outputKind>
@@ -48,4 +48,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java</artifactId>
+            <version>11.0</version>
+        </dependency>
+    </dependencies>
 </project>

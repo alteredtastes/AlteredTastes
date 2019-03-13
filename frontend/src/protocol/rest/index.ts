@@ -1,12 +1,7 @@
 /* tslint:disable */
-// Generated using typescript-generator version 2.12.476 on 2019-03-11 01:53:37.
+// Generated using typescript-generator version 2.12.476 on 2019-03-13 00:09:36.
 
 export interface Meal {
-    name: string;
-    price: number;
-}
-
-export interface MyClass {
     name: string;
     price: number;
 }
@@ -19,6 +14,14 @@ export interface HttpClient {
 export class RestApplicationClient {
 
     constructor(protected httpClient: HttpClient) {
+    }
+
+    /**
+     * HTTP POST /graphql
+     * Java method: com.alteredtastes.GraphQLService.GraphQLService
+     */
+    GraphQLService(): RestResponse<any> {
+        return this.httpClient.request({ method: "POST", url: uriEncoding`graphql` });
     }
 
     /**
@@ -63,16 +66,6 @@ export class RestApplicationClient {
 }
 
 export type RestResponse<R> = Promise<R>;
-
-export enum MyEnum {
-    BASE = "BASE",
-    ROOT = "ROOT",
-}
-
-export enum MyEnumm {
-    PROTOCOL = "PROTOCOL",
-    ROOT = "ROOT",
-}
 
 function uriEncoding(template: TemplateStringsArray, ...substitutions: any[]): string {
     let result = "";

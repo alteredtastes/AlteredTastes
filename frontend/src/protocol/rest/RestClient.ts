@@ -21,6 +21,7 @@ class Fetcher implements HttpClient {
     return this.doFetch(url, {
       method: method,
       body: data,
+      credentials: "same-origin",
     });
   }
 

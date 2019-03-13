@@ -1,36 +1,47 @@
 package com.alteredtastes;
 
-import com.alteredtastes.shared.Meal;
+import graphql.ExecutionResult;
+import graphql.GraphQL;
+import graphql.schema.GraphQLSchema;
+import graphql.schema.StaticDataFetcher;
+import graphql.schema.idl.RuntimeWiring;
+import graphql.schema.idl.SchemaGenerator;
+import graphql.schema.idl.SchemaParser;
+import graphql.schema.idl.TypeDefinitionRegistry;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
-import java.util.List;
+
+import static graphql.schema.idl.RuntimeWiring.newRuntimeWiring;
 
 @Path("/graphql")
 public class GraphQLService {
 
-    private List<Meal> meals = new ArrayList<Meal>();
-
-    public GraphQLService() {
-        meals.add(new Meal("Java beans",42.0f));
-    }
-
-    @GET
+    @POST
     @Path("/")
-    @Produces({ "application/json" })
-    public Response index() {
-        return Response.ok()
-                .entity(meals)
-                .build();
-    }
+    public Response GraphQLService(@Context Request request) {
+        String schema = "type Query{hello: String}";
 
-    @GET
-    @Path("/{id}")
-    @Produces({ "application/json" })
-    public Response meal(@PathParam("id") int id) {
-        return Response.ok()
-                .entity(meals.get(id))
+        SchemaParser schemaParser = new SchemaParser();
+        TypeDefinitionRegistry typeDefinitionRegistry = schemaParser.parse("schema.graphqls");
+
+        RuntimeWiring runtimeWiring = newRuntimeWiring()
+                .type("Query", builder -> builder.dataFetcher("hello", new StaticDataFetcher("world")))
                 .build();
+
+        SchemaGenerator schemaGenerator = new SchemaGenerator();
+        GraphQLSchema graphQLSchema = schemaGenerator.makeExecutableSchema(typeDefinitionRegistry, runtimeWiring);
+
+        GraphQL build = GraphQL.newGraphQL(graphQLSchema).build();
+        ExecutionResult executionResult = build.execute("{hello}");
+
+        System.out.println(executionResult.getData().toString());
+        return Response.ok()
+                .entity(executionResult.getData().toString())
+                .build();
+        // Prints: {hello=world}
     }
 }

@@ -1,5 +1,3 @@
-package com.alteredtastes.shared;
-
 public class Meal {
     private String name;
     private Float price;
